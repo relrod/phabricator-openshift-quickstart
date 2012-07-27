@@ -20,10 +20,6 @@ fi
 mv $OPENSHIFT_GEAR_DIR/repo/misc/myconfig.conf.php \
   $OPENSHIFT_GEAR_DIR/repo/phabricator/conf/custom/
 
-pushd $OPENSHIFT_GEAR_DIR/repo
-git submodule update --recursive
-popd
-
 # Up the db schema.
 $OPENSHIFT_GEAR_DIR/repo/phabricator/bin/storage upgrade --force
 
