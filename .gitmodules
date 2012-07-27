@@ -1,0 +1,9 @@
+[submodule "phabricator"]
+	path = phabricator
+	url = git://github.com/facebook/phabricator.git
+[submodule "libphutil"]
+	path = libphutil
+	url = git://github.com/facebook/libphutil.git
+[submodule "arcanist"]
+	path = arcanist
+	url = git://github.com/facebook/arcanist.git

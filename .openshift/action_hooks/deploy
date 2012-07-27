@@ -3,3 +3,29 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
+
+# Used for various Phabricator scripts...
+export PHABRICATOR_ENV=custom/myconfig
+
+# An annoying way to deal with config files...
+# Phabricator (and libphutil) is a submodule, which is good for two reasons.
+# 1) It means every time we push, OpenShift will pull in upstream's changes.
+#    (Upstream is very active)
+# 2) It forces us to have to work hard to diverge from upstream.
+#    And that's exactly what we're doing with our config file -- it's custom.
+if [[ ! -d "$OPENSHIFT_GEAR_DIR/repo/phabricator/conf/custom" ]]; then
+  mkdir $OPENSHIFT_GEAR_DIR/repo/phabricator/conf/custom
+fi
+
+mv $OPENSHIFT_GEAR_DIR/repo/misc/myconfig.conf.php \
+  $OPENSHIFT_GEAR_DIR/repo/phabricator/conf/custom/
+
+pushd $OPENSHIFT_GEAR_DIR/repo
+git submodule update --recursive
+popd
+
+# Up the db schema.
+$OPENSHIFT_GEAR_DIR/repo/phabricator/bin/storage upgrade --force
+
+# Everything hates me.
+ln -svf $OPENSHIFT_GEAR_DIR/repo/phabricator/webroot/* $OPENSHIFT_GEAR_DIR/repo/php/

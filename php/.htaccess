@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^rsrc/(.*)     -           [L,QSA]
+RewriteRule ^favicon.ico   -           [L,QSA]
+RewriteRule ^(.*)          index.php?__path__=/$1     [B,L,QSA]
+SetEnv PHABRICATOR_ENV custom/myconfig
