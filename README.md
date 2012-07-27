@@ -64,6 +64,23 @@ Writing objects: 100% (10/10), 2.13 KiB, done.
 ...
 ```
 
+## Create an account for yourself
+
+```shell
+# Figure out what to ssh to.
+$ grep rhcloud .git/config | sed 's/.*\/\(.\+\)\/~.*/\1/g'
+[some random username]@phabricator-[your namespace].rhcloud.com
+
+$ ssh [output from above]
+```
+
+Once you've ssh'd to the application, create a user using phabricator's `accountadmin`.
+
+```shell
+$ PHABRICATOR_ENV=custom/myconfig ./phabricator/repo/phabricator/bin/accountadmin
+[follow the wizard to create a user]
+```
+
 ## And finally...
 
 Go to it in your browser:
