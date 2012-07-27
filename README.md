@@ -49,6 +49,8 @@ Updating f1f79ce..303e532
 ```shell
 $ cp misc/myconfig.conf.php.dist misc/myconfig.conf.php
 $ $EDITOR misc/myconfig.conf.php
+$ git add -f misc/myconfig.conf.php
+$ git commit -m 'Added my own configuration file.'
 ```
 
 Be sure to edit the domain name to point to your namespace/app.
