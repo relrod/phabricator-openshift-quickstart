@@ -4,13 +4,18 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-pushd $OPENSHIFT_GEAR_DIR/repo
-
 # Used for various Phabricator scripts...
 export PHABRICATOR_ENV=custom/myconfig
 
+pushd $OPENSHIFT_GEAR_DIR/repo
+
+git clone --recursive git://github.com/facebook/phabricator.git
+git clone --recursive git://github.com/facebook/libphutil.git
+git clone --recursive git://github.com/facebook/arcanist.git
+
 # An annoying way to deal with config files...
-# Phabricator (and libphutil) is a submodule, which is good for two reasons.
+# Phabricator (and libphutil) is cloned on each deploy, which is good for two
+# reasons.
 # 1) It means every time we push, OpenShift will pull in upstream's changes.
 #    (Upstream is very active)
 # 2) It forces us to have to work hard to diverge from upstream.
