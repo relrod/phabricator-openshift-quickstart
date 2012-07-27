@@ -8,7 +8,6 @@ pushd $OPENSHIFT_GEAR_DIR/repo
 
 # Used for various Phabricator scripts...
 export PHABRICATOR_ENV=custom/myconfig
-export PATH=$PATH:`pwd`/pygments/bin
 
 # An annoying way to deal with config files...
 # Phabricator (and libphutil) is a submodule, which is good for two reasons.

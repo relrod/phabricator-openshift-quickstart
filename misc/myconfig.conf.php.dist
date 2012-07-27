@@ -1,4 +1,5 @@
 <?php
+// vim:syn=php
 
 return array(
 
@@ -18,6 +19,13 @@ return array(
   // Basic email domain configuration.
   'metamta.default-address' => 'admin@phabricator2-codeblock.rhcloud.com',
   'metamta.domain'          => 'phabricator2-codeblock.rhcloud.com',
+
+  'pygments.enabled' => true,
+
+  // Needed for non-standard location of Pygments.
+  'environment.append-paths' => array(
+    getenv('OPENSHIFT_GEAR_DIR').'/repo/pygments/bin',
+  ),
 
   // NOTE: Check default.conf.php for detailed explanations of all the
   // configuration options, including these.
