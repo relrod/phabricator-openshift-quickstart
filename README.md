@@ -91,6 +91,31 @@ https://phabricator-[your namespace].rhcloud.com/
 
 Have fun!
 
+# Notes
+
+## Repository location
+
+OpenShift gives (as of this writing) 1GB of space with each gear by default.
+You can request more space, however. See the instructions
+[here](https://openshift.redhat.com/community/faq/how-much-disk-space-do-i-get-with-openshift).
+
+An important note is that every time you deploy to OpenShift, your live app
+gets deleted and recreated from the new push. This means that any changes you
+make to the live app (via ssh, for example), will get overwritten.
+
+Because if this, it's imporant to place clones of repositories that Phabricator tracks,
+in a "safe" location. In OpenShift terms, this location is `../data/`, relative to the
+live repository. Also known as `$OPENSHIFT_GEAR_DIR/data`. Files/directories in `../data`
+are persistent through deployments.
+
+## Pygments
+
+I've managed to get Pygments working decently with Phabricator, now that upstream
+[D3091](https://secure.phabricator.com/D3091) has landed. Behind the scenes,
+the Quickstart will set up a python 'virtualenv' in your repository space when you
+deploy. This means 1) we are able to install Pygments into this environment, and use
+it; and 2) Every time you deploy (since your live repository space gets deleted and
+re-created), you get the latest Pygments automatically. Have fun!
 
 # Thanks
 
