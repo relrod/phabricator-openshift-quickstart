@@ -3,6 +3,8 @@
 # is deployed and started.  This script gets executed directly, so 
 # it could be python, php, ruby, etc.
 
+export PHABRICATOR_ENV=custom/myconfig
+
 pushd $OPENSHIFT_REPO_DIR
 
 # Start up daemons.
