@@ -12,3 +12,9 @@
 # prevent your application from stopping cleanly or starting at all.
 # Application start and stop is subject to different timeouts
 # throughout the system.
+
+export PHABRICATOR_ENV=custom/myconfig
+
+pushd $OPENSHIFT_REPO_DIR
+./phabricator/bin/phd stop
+popd

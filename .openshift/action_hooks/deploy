@@ -7,7 +7,7 @@
 # Used for various Phabricator scripts...
 export PHABRICATOR_ENV=custom/myconfig
 
-pushd $OPENSHIFT_GEAR_DIR/repo
+pushd $OPENSHIFT_REPO_DIR
 
 git clone --recursive git://github.com/facebook/phabricator.git
 git clone --recursive git://github.com/facebook/libphutil.git
@@ -33,9 +33,9 @@ if [[ ! -d "./pygments" ]]; then
 fi
 
 # Up the db schema.
-$OPENSHIFT_GEAR_DIR/repo/phabricator/bin/storage upgrade --force
+./phabricator/bin/storage upgrade --force
 
 # Everything hates me.
-ln -svf $OPENSHIFT_GEAR_DIR/repo/phabricator/webroot/* $OPENSHIFT_GEAR_DIR/repo/php/
+ln -svf $OPENSHIFT_REPO_DIR/phabricator/webroot/* ./php/
 
 popd
