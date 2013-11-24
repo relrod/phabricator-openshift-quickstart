@@ -12,9 +12,9 @@ return array(
   'phabricator.base-uri' => 'https://phabricator2-codeblock.rhcloud.com/',
 
   // Connection information for MySQL.
-  'mysql.host' => getenv('OPENSHIFT_DB_HOST'),
-  'mysql.user' => getenv('OPENSHIFT_DB_USERNAME'),
-  'mysql.pass' => getenv('OPENSHIFT_DB_PASSWORD'),
+  'mysql.host' => getenv('OPENSHIFT_MYSQL_DB_HOST'),
+  'mysql.user' => getenv('OPENSHIFT_MYSQL_DB_USERNAME'),
+  'mysql.pass' => getenv('OPENSHIFT_MYSQL_DB_PASSWORD'),
 
   // Basic email domain configuration.
   'metamta.default-address' => 'admin@phabricator2-codeblock.rhcloud.com',
